@@ -17,21 +17,33 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+	//products
+	Route::get('/products', [ProductController::class, 'index'])->name('product');
+
+	Route::get('/checkout/{id}', [ProductController::class, 'checkout'])->name('checkout');
+
+	Route::get('/success', [ProductController::class, 'success'])->name('success');
+
+	Route::get('/cancel', [ProductController::class, 'cancel'])->name('cancel');
+
+	Route::get('/notify', [ProductController::class, 'notify'])->name('notify');
+	
 });
 
 
 // ->name es para la ruta en la vista
- Route::get('/products', [ProductController::class, 'index'])->name('product');
+ // Route::get('/products', [ProductController::class, 'index'])->name('product');
 
 require __DIR__.'/auth.php';

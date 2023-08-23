@@ -46,27 +46,66 @@ class ProductController extends Controller
      // $id = Auth::user()->id;
 
      // productos comprados, el where, where funciona como un and
-        $users = DB::table('users as u')
-        ->leftJoin('users_products as up', 'u.id', '=', 'up.user_id')
-        ->leftJoin('products as p', 'p.id', '=', 'up.product_id')
+     $users = DB::table('users as u')
+     ->leftJoin('users_products as up', 'u.id', '=', 'up.user_id')
+     ->leftJoin('products as p', 'p.id', '=', 'up.product_id')
             // ->select('name', 'email as user_email')
-        ->select('*')
-        ->where('u.email', $email)
-        ->where('u.is_buyer',1)
-        ->get();
+     ->select('*')
+     ->where('u.email', $email)
+     ->where('u.is_buyer',1)
+     ->get();
 
           // productos en venta
-        $product_all = DB::table('products as p')
-        ->leftJoin('prices as pr', 'pr.id', '=', 'p.price_id')        
-        ->get();
+     $product_all = DB::table('products as p')
+     ->leftJoin('prices as pr', 'pr.id', '=', 'p.price_id')        
+     ->get();
 
         // return response()->json($users);
 
-        return view('products.index', [
-            'products' => $users,
-            'products_sell' => $product_all,
-        ]);
-    }
+     return view('products.index', [
+        'products' => $users,
+        'products_sell' => $product_all,
+    ]);
+ }
+
+ public function checkout($id)
+ {
+
+     $email = Auth::user()->email;
+
+     $product_all = DB::table('products as p')
+     ->leftJoin('prices as pr', 'pr.id', '=', 'p.price_id')
+     ->where('p.id', $id)        
+     // ->get();
+     ->first();
+
+     // print_r($product_all);
+
+     // exit;
+
+     return view('products.checkout', [
+        // 'products' => $users,
+        'products_sell' => $product_all
+    ]);
+
+      // return view('products.checkout')->with(['products_sell'=>$product_all]);
+ }
+
+ public function success()
+ {
+    return view('products.success');
+}
+
+public function cancel()
+{
+ return view('products.cancel');
+}
+
+public function notify()
+{
+ 
+}
+
 
     /**
      * Store a newly created resource in storage.

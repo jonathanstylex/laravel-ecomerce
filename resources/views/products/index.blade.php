@@ -22,6 +22,7 @@
         <p>Nombre Producto: {{ $product->product_name }}</p>
         <p>Description: {{ $product->description }}</p>
         <p>Price: {{ $product->price }}</p>
+        <a href="/checkout/{{ $product->id }}" class="btn btn-info">Ir al checkout</a>
         @endforeach
         @endif
 
