@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     /**
@@ -16,23 +18,54 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // ejemplos relaciones
+    // public function index()
+    // {
+
+    //     $user = User::find(1);  
+
+    //     // dd($user);
+
+    //     // dd($user->products);   
+
+    //     dd($user->products()->sync(1));
+
+    //     $user = Auth::user();
+
+    //  // $email = Auth::user()->email;
+    //  // $id = Auth::user()->id;
+
+    //     return response()->json($user);
+    // }
     public function index()
     {
 
-        $user = User::find(1);  
+        // $user = Auth::user();
 
-        // dd($user);
-
-        // dd($user->products);   
-
-        dd($user->products()->sync(1));
-
-        $user = Auth::user();
-
-     // $email = Auth::user()->email;
+     $email = Auth::user()->email;
      // $id = Auth::user()->id;
 
-        return response()->json($user);
+     // productos comprados, el where, where funciona como un and
+        $users = DB::table('users as u')
+        ->leftJoin('users_products as up', 'u.id', '=', 'up.user_id')
+        ->leftJoin('products as p', 'p.id', '=', 'up.product_id')
+            // ->select('name', 'email as user_email')
+        ->select('*')
+        ->where('u.email', $email)
+        ->where('u.is_buyer',1)
+        ->get();
+
+          // productos en venta
+        $product_all = DB::table('products as p')
+        ->leftJoin('prices as pr', 'pr.id', '=', 'p.price_id')        
+        ->get();
+
+        // return response()->json($users);
+
+        return view('products.index', [
+            'products' => $users,
+            'products_sell' => $product_all,
+        ]);
     }
 
     /**

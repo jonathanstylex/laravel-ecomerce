@@ -17,14 +17,18 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $password = password_hash('Test1234',PASSWORD_BCRYPT);
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             // 'email_verified_at' => date('y-m-d'),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password' => $password, 
             'remember_token' => Str::random(10),
             'role_id' => 1,
+            'is_buyer' => 1,
         ];
     }
 

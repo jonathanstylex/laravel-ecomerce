@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
- Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+// ->name es para la ruta en la vista
+ Route::get('/products', [ProductController::class, 'index'])->name('product');
 
 require __DIR__.'/auth.php';

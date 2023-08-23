@@ -32,7 +32,9 @@ class ProductFactory extends Factory
 
         return [
          'product_name' => 'billete',
-         'description' => 'lorem lorem isu'
+         'description' => 'lorem lorem isu',
+         'price_id' => 1
+         // 'description' => 'lorem lorem isu'
          // 'client_company_name' => $this->faker->company(),
          // 'client_phone' => $this->faker->phoneNumber(),
          // 'client_email' => $this->faker->companyEmail(),
