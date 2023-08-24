@@ -1,16 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-
-        @if ($products)
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Products') }}
-        </h2>
-
-        @foreach ($products as $product)
-        <p>Nombre Producto: {{ $product->product_name }}</p>
-        <p>Description: {{ $product->description }}</p>
-        @endforeach
-        @endif
+    <x-slot name="header">       
 
         <div class="row">
         @if ($products_sell)
@@ -26,7 +15,7 @@
             @foreach ($products_sell as $product)
             <p>Nombre Producto: {{ $product->product_name }}</p>
             <p>Description: {{ $product->description }}</p>
-         {{--    <p>Price: {{ $product->price }}</p> --}}
+            <p>Price: {{ $product->price }}</p>
             <a href="/checkout/{{ $product->id }}" class="btn btn-info">Ir al checkout</a>
             @endforeach
 

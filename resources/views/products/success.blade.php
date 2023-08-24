@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
 
-        <h1>Compra procesada</h1>
+        <h1 class="bg-success">Compra procesada</h1>
 
     </x-slot>
 

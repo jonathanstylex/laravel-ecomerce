@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProductController;
 
+use App\Http\Controllers\OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +33,8 @@ Route::middleware('auth')->group(function () {
 
 	//products
 	Route::get('/products', [ProductController::class, 'index'])->name('product');
+
+	Route::get('/orders', [OrderController::class, 'index'])->name('order');
 
 	Route::get('/checkout/{id}', [ProductController::class, 'checkout'])->name('checkout');
 

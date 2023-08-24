@@ -23,14 +23,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::truncate();
         \App\Models\Order::truncate();
         \App\Models\User::truncate();
+        \App\Models\Price::truncate();
         \App\Models\UserProduct::truncate();
 
         // Schema::enableForeignKeyConstraints();
 
-        \App\Models\Product::factory(1)->create();
+        \App\Models\Product::factory(3)->create();
         \App\Models\Category::factory(1)->create();
         \App\Models\Order::factory(1)->create();
         \App\Models\User::factory(1)->create();
+        \App\Models\Price::factory(1)->create();
         \App\Models\UserProduct::factory(1)->create();
 
         // \App\Models\User::factory(10)->create();

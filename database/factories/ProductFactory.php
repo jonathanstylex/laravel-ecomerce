@@ -31,8 +31,8 @@ class ProductFactory extends Factory
 
 
         return [
-         'product_name' => 'billete',
-         'description' => 'lorem lorem isu',
+         'product_name' => $this->faker->randomElement(['Billete Madrid','Billete Ibiza','Billete Barcelona']),
+         'description' => 'Reserva de billete para viajar a su destino',
          'price_id' => 1
          // 'description' => 'lorem lorem isu'
          // 'client_company_name' => $this->faker->company(),

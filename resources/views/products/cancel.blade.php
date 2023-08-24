@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
 
-        <h1>Compra cancelada</h1>
+        <h1 class="bg-danger">Compra cancelada</h1>
 
     </x-slot>
 

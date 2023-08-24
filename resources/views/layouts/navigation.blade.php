@@ -77,6 +77,9 @@
             <x-responsive-nav-link :href="route('product')" :active="request()->routeIs('product')">
                 {{ __('Product') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('order')" :active="request()->routeIs('order')">
+                {{ __('Order') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

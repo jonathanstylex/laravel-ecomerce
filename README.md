@@ -1,4 +1,8 @@
-// iniciar server
+# Pasos
+email Admin: elissa@gmail.com
+
+## Starting 🚀
+* // iniciar server
 Php artisan serve
 
 //
@@ -49,3 +53,39 @@ php artisan make:factory UserProductFactory
 // subir las semillas la informacion
 
 php artisan sb:seed
+
+// starte kit tambien se puede crear custom
+
+composer require laravel/breeze –dev
+
+php artisan vendor:publish --tag=laravel-assets --ansi –force
+
+php artisan  breeze:install 
+
+// instalar dependencias js
+
+Unsupported engine {
+npm WARN EBADENGINE   package: 'vite@4.4.9',
+npm WARN EBADENGINE   required: { node: '^14.18.0 || >=16.0.0' },
+npm WARN EBADENGINE   current: { node: 'v14.17.2', npm: '9.2.0' }
+npm WARN EBADENGINE }
+
+npm install
+
+npm run dev
+
+
+// obtener usuario auth
+
+https://www.laravelia.com/post/laravel-get-logged-in-user-id-in-controller
+
+// relacion muchos a muchos
+
+https://www.itsolutionstuff.com/post/laravel-many-to-many-eloquent-relationship-tutorialexample.html
+
+// uso de and en laravel
+
+https://www.parthpatel.net/laravel-multiple-where-and-or-and-conditions-example/
+
+
+
